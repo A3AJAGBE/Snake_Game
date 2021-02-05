@@ -14,6 +14,14 @@ screen.tracer(0)
 # Instantiate Snake
 snake = Snake()
 
+# Snake Direction
+screen.listen()
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.left, "Left")
+screen.onkey(snake.right, "Right")
+
+
 start_game = True
 while start_game:
     screen.update()
