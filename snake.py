@@ -1,5 +1,9 @@
 import turtle
 MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 
 class Snake:
@@ -9,6 +13,7 @@ class Snake:
         self.posX = 0
         self.posY = 0
         self.make_snake()
+        self.head = self.initial_length[0]
 
     def make_snake(self):
         """This functions makes 3 squares as the initial length of the snake"""
@@ -25,4 +30,16 @@ class Snake:
             new_posX = self.initial_length[square - 1].xcor()
             new_posY = self.initial_length[square - 1].ycor()
             self.initial_length[square].goto(new_posX, new_posY)
-        self.initial_length[0].forward(MOVE_DISTANCE)
+        self.head.forward(MOVE_DISTANCE)
+
+    def up(self):
+        self.head.setheading(UP)
+
+    def down(self):
+        self.head.setheading(DOWN)
+
+    def left(self):
+        self.head.setheading(LEFT)
+
+    def right(self):
+        self.head.setheading(RIGHT)
