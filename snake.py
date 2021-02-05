@@ -18,11 +18,19 @@ class Snake:
     def make_snake(self):
         """This functions makes 3 squares as the initial length of the snake"""
         for _ in range(3):
-            sample = turtle.Turtle("square")
-            sample.penup()
-            sample.goto(x=self.posX, y=self.posY)
-            self.posX += -20
-            self.initial_length.append(sample)
+            self.add_length()
+
+    def add_length(self):
+        """This function add a square to the snake with proper postition"""
+        sample = turtle.Turtle("square")
+        sample.penup()
+        sample.goto(x=self.posX, y=self.posY)
+        self.posX += -20
+        self.initial_length.append(sample)
+
+    def grow(self):
+        """This function grows the snake"""
+        self.add_length()
 
     def move_snake(self):
         """This function moves the snake"""
