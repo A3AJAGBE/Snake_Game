@@ -1,6 +1,7 @@
 # Import
 import turtle
 from snake import Snake
+from snake_food import Food
 import time
 
 # Instantiate Screen
@@ -13,6 +14,9 @@ screen.tracer(0)
 
 # Instantiate Snake
 snake = Snake()
+
+# Instantiate Food
+food = Food()
 
 # Snake Direction
 screen.listen()
@@ -28,6 +32,10 @@ while start_game:
     # per second
     time.sleep(0.1)
     snake.move_snake()
+
+    # Detect snake collision with food
+    if snake.head.distance(food) < 15:
+        food.change_location()
 
 
 # Keep the screen open until closed
