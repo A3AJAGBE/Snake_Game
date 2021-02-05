@@ -15,6 +15,7 @@ screen.tracer(0)
 
 # Instantiate Snake
 snake = Snake()
+HEAD = snake.head
 
 # Instantiate Food
 food = Food()
@@ -38,9 +39,14 @@ while start_game:
     snake.move_snake()
 
     # Detect snake collision with food
-    if snake.head.distance(food) < 15:
+    if HEAD.distance(food) < 15:
         food.generate_location()
         scoreboard.increase_score()
+
+    # Detect collision with wall
+    if HEAD.xcor() > 280 or HEAD.xcor() < -280 or HEAD.ycor() > 280 or HEAD.ycor() < -280:
+        start_game = False
+        scoreboard.game_over()
 
 
 # Keep the screen open until closed
