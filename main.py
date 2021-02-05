@@ -40,6 +40,7 @@ while start_game:
 
     # Detect snake collision with food
     if HEAD.distance(food) < 15:
+        snake.grow()
         food.generate_location()
         scoreboard.increase_score()
 
@@ -48,6 +49,11 @@ while start_game:
         start_game = False
         scoreboard.game_over()
 
+    # Detect collision with tail
+    for square in snake.initial_length[1:-1]:
+        if HEAD.distance(square) < 10:
+            start_game = False
+            scoreboard.game_over()
 
 # Keep the screen open until closed
 screen.exitonclick()
